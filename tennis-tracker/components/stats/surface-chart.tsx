@@ -19,14 +19,16 @@ export function SurfaceChart({ data }: { data: SurfaceData[] }) {
               cx="50%" cy="50%"
               innerRadius={50} outerRadius={80}
               dataKey="total"
-              label={({ name, rate }) => `${name} ${rate}%`}
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              label={(props: any) => `${props.name} ${props.rate}%`}
               labelLine={false}
             >
               {data.map(d => <Cell key={d.key} fill={d.color} />)}
             </Pie>
             <Tooltip
               contentStyle={{ background: '#1c1c1e', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, color: '#fff' }}
-              formatter={(value: number, name: string, props) => [
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              formatter={(_value: any, _name: any, props: any) => [
                 `${props.payload.wins}勝/${props.payload.total - props.payload.wins}敗 (${props.payload.rate}%)`,
                 props.payload.name,
               ]}

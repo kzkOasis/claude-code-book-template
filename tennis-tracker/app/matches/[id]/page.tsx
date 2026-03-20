@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import { createClient } from '@/lib/supabase/server'
 import { redirect, notFound } from 'next/navigation'
 import type { Match } from '@/types'
@@ -91,10 +92,10 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ id
             <CardBody>
               <h3 className="text-sm font-semibold text-white/60 mb-3">ショット統計</h3>
               <div className="grid grid-cols-2 gap-3">
-                {match.aces !== null && <StatChip label="エース" value={match.aces} color="text-blue-400" />}
-                {match.double_faults !== null && <StatChip label="ダブルフォルト" value={match.double_faults} color="text-red-400" />}
-                {match.winners !== null && <StatChip label="ウィナー" value={match.winners} color="text-emerald-400" />}
-                {match.unforced_errors !== null && <StatChip label="凡ミス(UE)" value={match.unforced_errors} color="text-orange-400" />}
+                {match.aces != null && <StatChip label="エース" value={match.aces ?? null} color="text-blue-400" />}
+                {match.double_faults != null && <StatChip label="ダブルフォルト" value={match.double_faults ?? null} color="text-red-400" />}
+                {match.winners != null && <StatChip label="ウィナー" value={match.winners ?? null} color="text-emerald-400" />}
+                {match.unforced_errors != null && <StatChip label="凡ミス(UE)" value={match.unforced_errors ?? null} color="text-orange-400" />}
               </div>
             </CardBody>
           </Card>
